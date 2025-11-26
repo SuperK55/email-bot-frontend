@@ -27,8 +27,7 @@ export default function Layout({ children }) {
               <Mail size={28} />
             </div>
             <div>
-              <h1 className="text-lg font-bold">Email Platform</h1>
-              <p className="text-xs text-purple-200">Koch Construtora</p>
+              <h1 className="text-lg font-bold">Koch Construtora</h1>
             </div>
           </div>
 

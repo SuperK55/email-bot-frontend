@@ -33,8 +33,7 @@ export default function Login() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full mb-4">
             <Mail className="text-white" size={32} />
           </div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Email Campaign Platform</h1>
-          <p className="text-gray-600">Koch Construtora</p>
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">KOCH CONSTRUTORA</h1>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
