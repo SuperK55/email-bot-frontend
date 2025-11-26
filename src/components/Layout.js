@@ -20,7 +20,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-purple-800 to-indigo-900 text-white shadow-2xl">
+      <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white shadow-2xl">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-white bg-opacity-20 p-2 rounded-lg">
@@ -41,7 +41,7 @@ export default function Layout({ children }) {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${
                     isActive(item.path)
                       ? 'bg-white bg-opacity-20 text-white'
-                      : 'text-purple-100 hover:bg-white hover:bg-opacity-10'
+                      : 'text-gray-300 hover:bg-white hover:bg-opacity-10'
                   }`}
                 >
                   <Icon size={20} />
@@ -54,7 +54,7 @@ export default function Layout({ children }) {
 
         <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white border-opacity-20">
           <div className="mb-4">
-            <p className="text-sm text-purple-200">Logado como</p>
+            <p className="text-sm text-gray-300">Logado como</p>
             <p className="font-medium truncate">{user?.email}</p>
           </div>
           <button
