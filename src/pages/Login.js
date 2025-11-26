@@ -27,10 +27,10 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0e121b]">
-      <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1a1f2e] rounded-full mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0e121b] rounded-full mb-4">
             <Mail className="text-white" size={32} />
           </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">KOCH CONSTRUTORA</h1>
