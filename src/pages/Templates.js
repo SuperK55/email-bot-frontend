@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import api from '../utils/api';
 import toast from 'react-hot-toast';
-import { Plus, Edit, Trash2, Eye } from 'lucide-react';
+import { Plus, Edit, Trash2 } from 'lucide-react';
 
 export default function Templates() {
   const [templates, setTemplates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [editingTemplate, setEditingTemplate] = useState(null);
 
   useEffect(() => {
     fetchTemplates();
@@ -60,13 +60,13 @@ export default function Templates() {
             <p className="text-sm text-gray-600 mb-4 line-clamp-2">{template.subject}</p>
             
             <div className="flex gap-2">
-              <Link
-                to={`/templates/${template.id}/edit`}
+              <button
+                onClick={() => setEditingTemplate(template)}
                 className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition text-sm font-medium"
               >
                 <Edit size={16} />
                 Editar
-              </Link>
+              </button>
               <button
                 onClick={() => handleDelete(template.id)}
                 className="flex items-center justify-center gap-2 bg-red-100 hover:bg-red-200 text-red-700 px-4 py-2 rounded-lg transition text-sm font-medium"
@@ -100,14 +100,25 @@ export default function Templates() {
           }}
         />
       )}
+
+      {editingTemplate && (
+        <CreateTemplateModal
+          template={editingTemplate}
+          onClose={() => setEditingTemplate(null)}
+          onSuccess={() => {
+            setEditingTemplate(null);
+            fetchTemplates();
+          }}
+        />
+      )}
     </div>
   );
 }
 
-function CreateTemplateModal({ onClose, onSuccess }) {
-  const [name, setName] = useState('');
-  const [subject, setSubject] = useState('');
-  const [htmlContent, setHtmlContent] = useState('');
+function CreateTemplateModal({ onClose, onSuccess, template = null }) {
+  const [name, setName] = useState(template?.name || '');
+  const [subject, setSubject] = useState(template?.subject || '');
+  const [textContent, setTextContent] = useState(template?.text_content || '');
   const [creating, setCreating] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -115,17 +126,28 @@ function CreateTemplateModal({ onClose, onSuccess }) {
     setCreating(true);
 
     try {
-      await api.post('/templates', {
-        name,
-        subject,
-        html_content: htmlContent,
-        text_content: htmlContent.replace(/<[^>]*>/g, '')
-      });
-
-      toast.success('Template criado com sucesso');
+      if (template) {
+        // Update existing template
+        await api.put(`/templates/${template.id}`, {
+          name,
+          subject,
+          text_content: textContent,
+          html_content: '' // Plain text only
+        });
+        toast.success('Template atualizado com sucesso');
+      } else {
+        // Create new template
+        await api.post('/templates', {
+          name,
+          subject,
+          text_content: textContent,
+          html_content: '' // Plain text only
+        });
+        toast.success('Template criado com sucesso');
+      }
       onSuccess();
     } catch (error) {
-      toast.error('Falha ao criar template');
+      toast.error(template ? 'Falha ao atualizar template' : 'Falha ao criar template');
     } finally {
       setCreating(false);
     }
@@ -134,7 +156,9 @@ function CreateTemplateModal({ onClose, onSuccess }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto p-4">
       <div className="bg-white rounded-xl p-8 max-w-2xl w-full my-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Criar Template</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          {template ? 'Editar Template' : 'Criar Template'}
+        </h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -163,18 +187,18 @@ function CreateTemplateModal({ onClose, onSuccess }) {
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Conteúdo do Email (HTML)
+              Conteúdo do Email
             </label>
             <textarea
-              value={htmlContent}
-              onChange={(e) => setHtmlContent(e.target.value)}
+              value={textContent}
+              onChange={(e) => setTextContent(e.target.value)}
               required
               rows={12}
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none font-mono text-sm"
-              placeholder="<p>Olá,</p><p>Bem-vindo!</p>"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none"
+              placeholder="Olá {{nome}},\n\nBem-vindo à Koch Construtora!\n\nAtenciosamente,\nEquipe Koch Construtora"
             />
             <p className="text-xs text-gray-500 mt-2">
-              Use variáveis com {'{{'} e {'}}'}: {'{{nome}}'}, {'{{email}}'}
+              Use variáveis com {'{{'} e {'}}'}: {'{{nome}}'}, {'{{email}}'}, {'{{empresa}}'}
             </p>
           </div>
           
@@ -191,7 +215,7 @@ function CreateTemplateModal({ onClose, onSuccess }) {
               disabled={creating}
               className="flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg font-medium transition disabled:opacity-60"
             >
-              {creating ? 'Criando...' : 'Criar Template'}
+              {creating ? (template ? 'Atualizando...' : 'Criando...') : (template ? 'Atualizar Template' : 'Criar Template')}
             </button>
           </div>
         </form>
