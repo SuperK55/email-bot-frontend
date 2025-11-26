@@ -161,21 +161,21 @@ export default function Dashboard() {
       {/* Quick Actions */}
       <div className="flex gap-4 flex-wrap">
         <Link
-          to="/lists/new"
+          to="/lists"
           className="flex items-center gap-2 bg-white hover:bg-gray-50 px-6 py-3 rounded-lg shadow-md border-2 border-gray-200 transition"
         >
           <List size={20} />
           <span className="font-medium">Nova Lista</span>
         </Link>
         <Link
-          to="/templates/new"
+          to="/templates"
           className="flex items-center gap-2 bg-white hover:bg-gray-50 px-6 py-3 rounded-lg shadow-md border-2 border-gray-200 transition"
         >
           <FileText size={20} />
           <span className="font-medium">Novo Template</span>
         </Link>
         <Link
-          to="/campaigns/new"
+          to="/campaigns"
           className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 rounded-lg shadow-md transition"
         >
           <Send size={20} />
