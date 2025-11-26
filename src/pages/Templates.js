@@ -194,11 +194,17 @@ function CreateTemplateModal({ onClose, onSuccess, template = null }) {
               onChange={(e) => setTextContent(e.target.value)}
               required
               rows={12}
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none"
-              placeholder="Olá {{nome}},\n\nBem-vindo à Koch Construtora!\n\nAtenciosamente,\nEquipe Koch Construtora"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:ring-4 focus:ring-purple-100 outline-none resize-y"
+              placeholder="Olá {{nome}},
+
+Bem-vindo à Koch Construtora!
+
+Atenciosamente,
+Equipe Koch Construtora"
+              style={{ whiteSpace: 'pre-wrap' }}
             />
             <p className="text-xs text-gray-500 mt-2">
-              Use variáveis com {'{{'} e {'}}'}: {'{{nome}}'}, {'{{email}}'}, {'{{empresa}}'}
+              💡 Pressione Enter para criar uma nova linha. Use variáveis: {'{{nome}}'}, {'{{email}}'}, {'{{empresa}}'}
             </p>
           </div>
           
