@@ -140,7 +140,7 @@ export default function CampaignDetails() {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-4">
             <div
-              className="bg-gradient-to-r from-gray-800 to-gray-900 h-4 rounded-full transition-all"
+              className="bg-[#0e121b] h-4 rounded-full transition-all"
               style={{ width: `${progress}%` }}
             />
           </div>

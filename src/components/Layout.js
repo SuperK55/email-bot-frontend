@@ -20,7 +20,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white shadow-2xl">
+      <div className="fixed left-0 top-0 h-full w-64 bg-[#0e121b] text-white shadow-2xl">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-white bg-opacity-20 p-2 rounded-lg">

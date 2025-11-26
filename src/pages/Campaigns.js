@@ -78,7 +78,7 @@ export default function Campaigns() {
         <h1 className="text-3xl font-bold text-gray-900">Campanhas</h1>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition"
+          className="flex items-center gap-2 bg-[#0e121b] hover:bg-[#1a1f2e] text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition"
         >
           <Plus size={20} />
           Nova Campanha
@@ -118,7 +118,7 @@ export default function Campaigns() {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3">
                   <div
-                    className="bg-gradient-to-r from-gray-800 to-gray-900 h-3 rounded-full transition-all"
+                    className="bg-[#0e121b] h-3 rounded-full transition-all"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -177,7 +177,7 @@ export default function Campaigns() {
           <p className="text-gray-500 mb-4">Nenhuma campanha criada ainda</p>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="text-gray-800 hover:text-gray-900 font-medium"
+            className="text-[#0e121b] hover:text-[#1a1f2e] font-medium"
           >
             Criar a primeira campanha
           </button>
@@ -263,7 +263,7 @@ function CreateCampaignModal({ onClose, onSuccess }) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-gray-700 focus:ring-4 focus:ring-gray-100 outline-none"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#0e121b] focus:ring-4 focus:ring-gray-100 outline-none"
               placeholder="Ex: Campanha Janeiro 2025"
             />
           </div>
@@ -274,7 +274,7 @@ function CreateCampaignModal({ onClose, onSuccess }) {
               value={templateId}
               onChange={(e) => setTemplateId(e.target.value)}
               required
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-gray-700 focus:ring-4 focus:ring-gray-100 outline-none"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#0e121b] focus:ring-4 focus:ring-gray-100 outline-none"
             >
               <option value="">Selecione um template</option>
               {templates.map(t => (
@@ -289,7 +289,7 @@ function CreateCampaignModal({ onClose, onSuccess }) {
               value={listId}
               onChange={(e) => setListId(e.target.value)}
               required
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-gray-700 focus:ring-4 focus:ring-gray-100 outline-none"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#0e121b] focus:ring-4 focus:ring-gray-100 outline-none"
             >
               <option value="">Selecione uma lista</option>
               {lists.map(l => (
@@ -307,7 +307,7 @@ function CreateCampaignModal({ onClose, onSuccess }) {
               required
               min="1"
               max="10000"
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-gray-700 focus:ring-4 focus:ring-gray-100 outline-none"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#0e121b] focus:ring-4 focus:ring-gray-100 outline-none"
             />
           </div>
           
@@ -322,7 +322,7 @@ function CreateCampaignModal({ onClose, onSuccess }) {
             <button
               type="submit"
               disabled={creating}
-              className="flex-1 px-4 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg hover:shadow-lg font-medium transition disabled:opacity-60"
+              className="flex-1 px-4 py-3 bg-[#0e121b] hover:bg-[#1a1f2e] text-white rounded-lg hover:shadow-lg font-medium transition disabled:opacity-60"
             >
               {creating ? 'Criando...' : 'Criar Campanha'}
             </button>

@@ -42,7 +42,7 @@ export default function Dashboard() {
       
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-gray-800">
+        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-[#0e121b]">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600 mb-1">Campanhas</p>
@@ -50,7 +50,7 @@ export default function Dashboard() {
               <p className="text-sm text-gray-500 mt-1">{stats?.campaigns?.active || 0} ativas</p>
             </div>
             <div className="bg-gray-100 p-3 rounded-lg">
-              <Send className="text-gray-800" size={24} />
+              <Send className="text-[#0e121b]" size={24} />
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function Dashboard() {
                   <td className="py-3 px-4">
                     <Link
                       to={`/campaigns/${campaign.id}`}
-                      className="text-gray-800 hover:text-gray-900 font-medium text-sm"
+                      className="text-[#0e121b] hover:text-[#1a1f2e] font-medium text-sm"
                     >
                       Ver Detalhes
                     </Link>
@@ -176,7 +176,7 @@ export default function Dashboard() {
         </Link>
         <Link
           to="/campaigns"
-          className="flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white px-6 py-3 rounded-lg shadow-md transition"
+          className="flex items-center gap-2 bg-[#0e121b] hover:bg-[#1a1f2e] text-white px-6 py-3 rounded-lg shadow-md transition"
         >
           <Send size={20} />
           <span className="font-medium">Nova Campanha</span>

@@ -46,7 +46,7 @@ export default function Templates() {
         <h1 className="text-3xl font-bold text-gray-900">Templates de Email</h1>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition"
+          className="flex items-center gap-2 bg-[#0e121b] hover:bg-[#1a1f2e] text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition"
         >
           <Plus size={20} />
           Novo Template
@@ -84,7 +84,7 @@ export default function Templates() {
           <p className="text-gray-500 mb-4">Nenhum template criado ainda</p>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="text-gray-800 hover:text-gray-900 font-medium"
+            className="text-[#0e121b] hover:text-[#1a1f2e] font-medium"
           >
             Criar o primeiro template
           </button>
@@ -168,7 +168,7 @@ function CreateTemplateModal({ onClose, onSuccess, template = null }) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-gray-700 focus:ring-4 focus:ring-gray-100 outline-none"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#0e121b] focus:ring-4 focus:ring-gray-100 outline-none"
               placeholder="Ex: Boas-vindas"
             />
           </div>
@@ -180,7 +180,7 @@ function CreateTemplateModal({ onClose, onSuccess, template = null }) {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               required
-              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-gray-700 focus:ring-4 focus:ring-gray-100 outline-none"
+              className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#0e121b] focus:ring-4 focus:ring-gray-100 outline-none"
               placeholder="Ex: Bem-vindo à Koch Construtora"
             />
           </div>
@@ -219,7 +219,7 @@ Equipe Koch Construtora"
             <button
               type="submit"
               disabled={creating}
-              className="flex-1 px-4 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg hover:shadow-lg font-medium transition disabled:opacity-60"
+              className="flex-1 px-4 py-3 bg-[#0e121b] hover:bg-[#1a1f2e] text-white rounded-lg hover:shadow-lg font-medium transition disabled:opacity-60"
             >
               {creating ? (template ? 'Atualizando...' : 'Criando...') : (template ? 'Atualizar Template' : 'Criar Template')}
             </button>
