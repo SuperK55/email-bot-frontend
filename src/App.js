@@ -9,6 +9,7 @@ import Lists from './pages/Lists';
 import ListDetails from './pages/ListDetails';
 import Templates from './pages/Templates';
 import Campaigns from './pages/Campaigns';
+import CampaignDetails from './pages/CampaignDetails';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -32,6 +33,7 @@ function App() {
           <Route path="/lists/:id" element={<PrivateRoute><ListDetails /></PrivateRoute>} />
           <Route path="/templates" element={<PrivateRoute><Templates /></PrivateRoute>} />
           <Route path="/campaigns" element={<PrivateRoute><Campaigns /></PrivateRoute>} />
+          <Route path="/campaigns/:id" element={<PrivateRoute><CampaignDetails /></PrivateRoute>} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </AuthProvider>
