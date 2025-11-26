@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Lists from './pages/Lists';
+import ListDetails from './pages/ListDetails';
 import Templates from './pages/Templates';
 import Campaigns from './pages/Campaigns';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path="/lists" element={<PrivateRoute><Lists /></PrivateRoute>} />
+          <Route path="/lists/:id" element={<PrivateRoute><ListDetails /></PrivateRoute>} />
           <Route path="/templates" element={<PrivateRoute><Templates /></PrivateRoute>} />
           <Route path="/campaigns" element={<PrivateRoute><Campaigns /></PrivateRoute>} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
